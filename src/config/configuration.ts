@@ -5,4 +5,9 @@ export default () => ({
   DATABASE_URL: process.env.DATABASE_URL,
   REDIS_HOST: process.env.REDIS_HOST,
   REDIS_PORT: process.env.REDIS_PORT,
+  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
+  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
+  EXPIRES_IN: '2m',
+  REFRESH_IN: '7d',
+  BCRYPT_SALT_OR_ROUND: 10,
 });

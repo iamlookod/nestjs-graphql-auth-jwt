@@ -2,6 +2,58 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Token {
+  """JWT access token"""
+  accessToken: String!
+
+  """JWT refresh token"""
+  refreshToken: String!
+}
+
+type Auth {
+  """JWT access token"""
+  accessToken: String!
+
+  """JWT refresh token"""
+  refreshToken: String!
+  user: User!
+}
+
+type User {
+  id: String!
+  username: String!
+  name: String
+}
+
 type Query {
   helloWorld: String!
+  me: User!
+}
+
+type Mutation {
+  signup(data: SignupInput!): Auth!
+  login(data: LoginInput!): Auth!
+  refreshToken(token: String!): Token!
+  updateUser(data: UpdateUserInput!): User!
+  changePassword(data: ChangePasswordInput!): User!
+}
+
+input SignupInput {
+  username: String!
+  password: String!
+  name: String
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  name: String
+}
+
+input ChangePasswordInput {
+  oldPassword: String!
+  newPassword: String!
 }

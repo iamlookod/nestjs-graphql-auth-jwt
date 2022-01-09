@@ -14,6 +14,7 @@ async function bootstrap() {
   prismaService.enableShutdownHooks(app);
 
   app.useGlobalPipes(new ValidationPipe());
+  app.enableCors();
 
   await app.listen(port, () => {
     console.log(`🚀 Server ready at: http://localhost:${port}/graphql`);

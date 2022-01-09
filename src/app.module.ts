@@ -8,6 +8,9 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppResolver } from './app.resolver';
+import { UtilsModule } from './utils/utils.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -22,7 +25,11 @@ import { AppResolver } from './app.resolver';
       buildSchemaOptions: { dateScalarMode: 'timestamp' },
       playground: true,
       debug: true,
+      context: ({ req }) => ({ req }),
     }),
+    AuthModule,
+    UserModule,
+    UtilsModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
